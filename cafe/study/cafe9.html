@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 문서의 문자 인코딩 및 뷰포트 설정 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 문서의 제목 설정 -->
+    <title>광진구 주변 카페 추천</title>
+    <!-- Google Fonts에서 Do Hyeon 폰트 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <!-- 내부 스타일 시트 -->
+    <style>
+        /* 전체 페이지의 기본 스타일 설정 */
+        body {
+            font-family: 'Do Hyeon', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #c2b4d6; /* 배경 색상 설정 */
+        }
+        /* 배너 영역 스타일 설정 */
+        .banner {
+            background-color: #e5e5e5;
+            color: #354649;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            cursor: pointer; /* 클릭 가능하게 설정 */
+        }
+        /* 메뉴 영역 스타일 설정 */
+        .menu {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: #f7f7f7;
+        }
+        /* 메뉴 버튼 스타일 설정 */
+        .menu button {
+            background-color: #354649;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-family: 'Do Hyeon', sans-serif;
+        }
+        /* 메뉴 버튼 호버 효과 */
+        .menu button:hover {
+            background-color: #6d6d6d;
+        }
+        /* 콘텐츠 영역 스타일 설정 */
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
+        /* 갤러리 영역 스타일 설정 */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            gap: 10px; /* 이미지 간 간격을 일정하게 유지 */
+        }
+        /* 갤러리 내 링크 스타일 설정 */
+        .gallery a {
+            flex: 1 1 200px; /* 기본 너비를 200px로 설정, 공간이 부족할 경우 줄어들 수 있음 */
+            max-width: 200px; /* 최대 너비를 200px로 설정 */
+            box-sizing: border-box;
+            padding: 10px;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+        }
+        /* 갤러리 내 이미지 스타일 설정 */
+        .gallery img {
+            width: 100%; /* 부모 요소의 너비에 맞게 조정 */
+            height: 200px; /* 고정 높이 */
+            border-radius: 10px;
+            object-fit: cover; /* 이미지가 고정 크기에 맞게 조정됨 */
+            transition: transform 0.2s;
+        }
+        /* 갤러리 이미지 호버 효과 */
+        .gallery a:hover img {
+            transform: scale(1.05);
+        }
+        /* 갤러리 내 카페 이름 스타일 설정 */
+        .gallery .cafe-name {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        /* 미디어 쿼리를 통한 반응형 디자인 설정 */
+        @media (max-width: 1200px) {
+            .gallery a {
+                flex: 1 1 45%; /* 화면이 작아질 경우 너비를 45%로 설정 */
+            }
+        }
+        @media (max-width: 768px) {
+            .gallery a {
+                flex: 1 1 100%; /* 화면이 더 작아질 경우 너비를 100%로 설정 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 페이지 배너 -->
+    <div class="banner" onclick="showMainPage()">광진구 주변 카페 추천</div>
+    <!-- 메뉴 영역 -->
+    <div class="menu">
+        <!-- 각 메뉴 버튼 -->
+        <button onclick="showPage(1, '분위기가 좋은 카페')">분위기가 좋은 카페</button>
+        <button onclick="showPage(2, '디저트가 맛있는 카페')">디저트가 맛있는 카페</button>
+        <button onclick="showPage(3, '공부하기 좋은 카페')">공부하기 좋은 카페</button>
+        <button onclick="showPage(4, '커피가 맛있는 카페')">커피가 맛있는 카페</button>
+    </div>
+    <!-- 콘텐츠 영역 -->
+    <div class="content" id="content">
+        <!-- 초기 소개글 -->
+        <p>광진구에는 다양한 분위기와 매력을 가진 카페들이 많이 있습니다.<br>선정한 카페는 모두 학교에서 30분 이내에 갈 수 있는 위치에 있습니다.<br> 상단의 메뉴를 클릭하여 각 카페의 소개와 이미지를 확인해보세요!</p>
+    </div>
+    <!-- 갤러리 영역 -->
+    <div class="gallery" id="gallery">
+        <!-- 갤러리 아이템은 JavaScript로 삽입됩니다 -->
+    </div>
+
+    <!-- JavaScript 코드 -->
+    <script>
+        // 카페 데이터 배열
+        const cafes = [
+            { href: "cafe1.html", img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230212_231%2F1676154913718sctjy_JPEG%2FScreenshot_20230212_073124_Instagram.jpg", name: "연필" },
+            { href: "cafe2.html", img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDAzMTNfMTk3%2FMDAxNzEwMjk3Njc3MTA4.-3lLBcSfPAOTJO_4Or88ZAjM2Py_hP3xR6S-I3Ti9-wg.qQFe97Jj7VPPiAA3I8MZQT7PpKrKsGzbbw_ZCpkf8OMg.JPEG%2FIMG_2222.jpeg%3Ftype%3Dw1500_60_sharpen", name: "IWLT SEOUL" },
+            { href: "cafe3.html", img: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAzMTNfMTc5%2FMDAxNzEwMzA0NzI2MjM1.yHz2hH9nV9iXCYE3dxbYpJYojD21_-MF3zdy_Bh8Qj4g.Gz8IdQGGcg6GInVm_o-WjkuX3WM1os3WJkbKUVr-1yQg.JPEG%2FKakaoTalk_Photo_2024-03-13-13-38-30_016.jpeg", name: "엠케이갤러리스튜디오" },
+            { href: "cafe4.html", img: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAzMDdfMjQx%2FMDAxNzA5NzQ2MDAwNDYy.PjOmn3voaggALM-FnnxLqLTqu0yTS81POH0VpRjppf8g.7NF7iK852kEVM0PYqlr2ANhl2zXkmaNMyXA7zXHu-gUg.JPEG%2F20240227%25A3%25DF192148.jpg", name: "본지르르 성수" },
+            { href: "cafe5.html", img: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA1MTBfMTAx%2FMDAxNzE1MzIyMjcxNjYw.-_DSJH5SYik_CeuE60l3Fug8CgBBWkQ5zWCAcJzuotwg.GMml7PBf1dMDVc5mbbkeFnT93vDRU5_T55dM0f7TU_Mg.JPEG%2FIMG_2370.JPG", name: "베티버 성수" },
+            { href: "cafe6.html", img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190514_202%2F1557834441172vgqEI_JPEG%2FdaqS0V7omAGtn1E5tIv3PhSf.jpg", name: "솔티드" },
+            { href: "cafe7.html", img: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzExMjVfMzUg%2FMDAxNzAwODM4MjE1ODc1.JCQmpR1VIDCLKSMCAYfrPVAtsFz1Is3nRYWftSPf4bgg.n6HiVgSJ_vBoDsyWQ-q0y7vwOgvLKRY2ULqD4ckeeuwg.JPEG.hyu_uu%2FIMG_1559.JPG", name: "지나고나면" },
+            { href: "cafe8.html", img: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAyMTdfMTkz%2FMDAxNzA4MTc0MzU0OTAw.hGveRxfRkieUuPoHHEwkktsum4z3AddJmO0cfa6Qxksg.qg8KSYV04hkqWcriLN8hOXI9tMz57RP7nxA3zAj_mZog.JPEG.hwangj95%2FIMG_4028.jpg", name: "레스트인무드" },
+            { href: "cafe9.html", img: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAzMDdfMTUw%2FMDAxNzA5ODAwNzc5NzQ4.qdc0kXSRRX3GkSjF1ig1xjmNGVpqUXCVGaIHdSDhmncg.9azX3BEdhXts-g8VDmH5b9Mb7DgLId5cZ30xjT8O7AIg.JPEG%2FKakaoTalk_20240307_173710521_22.jpg", name: "포스트커피" },
+            { href: "cafe10.html", img: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA4MTRfMTI0%2FMDAxNjI4OTE3MzA3MTY5.HKTAdbkg6T4fD1jbHnRA1in74n53s5O7TSVzsBTE_rgg.7UqY1qs67JiPNsHAZG08fjqxPZksof0VleaAVw9JlT0g.JPEG.kimdw2008%2F20210803%25A3%25DF191053.jpg&type=a340", name: "체리커피" },
+            { href: "cafe11.html", img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221012_109%2F1665527188503fhyur_JPEG%2F1665497554576.jpg", name: "카페지니" },
+            { href: "cafe12.html", img: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA0MTBfMzAg%2FMDAxNjQ5NTUzMzkwMTk0.yl5eYh2viROf2msCv0MZsNh8Lc9qAWJFC3_UNFzRDzsg.QTEu90yX8BS61dpFUuoREwJk-OSFQYlcQ2B4KAD9U3Mg.JPEG.hurchaeyun99%2FIMG_0735.jpg", name: "카페온더플랜" },
+            { href: "cafe13.html", img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220318_99%2F1647583579726UndKr_JPEG%2F%25BF%25DC%25B0%25FC.jpg", name: "푸쉬커피" },
+            { href: "cafe14.html", img: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEyMjJfMTg3%2FMDAxNjcxNjk0NDg3NjYz.fnb5jDy8x-BGgrV3JCgsos6eJdBoOwjg9FFTXMYY1XEg.S6L08XBlPahIjz_03KcGMlRrYWp7k_V1D0F5AMEmUUsg.JPEG.fjqm2676%2FIMG_9132.jpg", name: "꼬메노" },
+            { href: "cafe15.html", img: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAzMjFfNzEg%2FMDAxNzExMDIwMTg2Mjc4.p87OFW503j_K6_6-dXZXJq2SHoPQKsREbDnhMyRQezUg.5hpPZcbU7UZn8xh5WUxaohD0D3rYbN69TDHAcTziYsog.JPEG%2FIMG_8117.jpg", name: "모츠커피" },
+            { href: "cafe16.html", img: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzExMTNfOSAg%2FMDAxNjk5ODQ5NDQ1OTI4.ixJ92cU_cjq6k-Rh2pkXtBKqqkPuK0L2PAV02ubzvE4g.HODjbaYhSE6lQ1q-8hpgv5b7f-bUUQ880rbqwC7whmgg.JPEG.haili17%2FIMG_8728.jpg", name: "코에오 COEO" },
+        ];
+
+        // 초기 메인 페이지 설정 함수
+        function showMainPage() {
+            const content = document.getElementById('content');
+            content.innerHTML = '<p>광진구에는 다양한 분위기와 매력을 가진 카페들이 많이 있습니다.<br>선정한 카페는 모두 학교에서 30분 이내에 갈 수 있는 위치에 있습니다.<br> 상단의 메뉴를 클릭하여 각 카페의 소개와 이미지를 확인해보세요!</p>';
+
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = ''; // 갤러리 초기화
+        }
+
+        // 페이지 별 카페 리스트를 보여주는 함수
+        function showPage(page, category) {
+            const content = document.getElementById('content');
+            content.innerHTML = `<p>${category}를 소개합니다.</p>`;
+
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = ''; // 갤러리 초기화
+
+            const start = (page - 1) * 4;
+            const end = start + 4;
+            const cafesToShow = cafes.slice(start, end);
+
+            cafesToShow.forEach(cafe => {
+                const cafeElement = document.createElement('a');
+                cafeElement.href = cafe.href;
+
+                const cafeImg = document.createElement('img');
+                cafeImg.src = cafe.img;
+                cafeImg.alt = cafe.name;
+
+                const cafeName = document.createElement('div');
+                cafeName.className = 'cafe-name';
+                cafeName.innerText = cafe.name;
+
+                cafeElement.appendChild(cafeImg);
+                cafeElement.appendChild(cafeName);
+
+                gallery.appendChild(cafeElement);
+            });
+        }
+
+        // 초기 페이지 설정
+        showMainPage();
+    </script>
+</body>
+</html>
