@@ -50,10 +50,11 @@
             flex-wrap: wrap;
             justify-content: space-around;
             padding: 20px;
+            gap: 10px; /* 이미지 간 간격을 일정하게 유지 */
         }
         .gallery a {
-            flex: 1 0 20%;
-            max-width: 20%;
+            flex: 1 1 200px; /* 기본 너비를 200px로 설정, 공간이 부족할 경우 줄어들 수 있음 */
+            max-width: 200px; /* 최대 너비를 200px로 설정 */
             box-sizing: border-box;
             padding: 10px;
             position: relative;
@@ -61,7 +62,7 @@
             color: inherit;
         }
         .gallery img {
-            width: 200px; /* 고정 너비 */
+            width: 100%; /* 부모 요소의 너비에 맞게 조정 */
             height: 200px; /* 고정 높이 */
             border-radius: 10px;
             object-fit: cover; /* 이미지가 고정 크기에 맞게 조정됨 */
@@ -79,6 +80,18 @@
             padding: 5px 10px;
             border-radius: 5px;
             font-size: 16px;
+        }
+        
+        /* Media Queries for Responsive Design */
+        @media (max-width: 1200px) {
+            .gallery a {
+                flex: 1 1 45%; /* 화면이 작아질 경우 너비를 45%로 설정 */
+            }
+        }
+        @media (max-width: 768px) {
+            .gallery a {
+                flex: 1 1 100%; /* 화면이 더 작아질 경우 너비를 100%로 설정 */
+            }
         }
     </style>
 </head>
@@ -120,7 +133,7 @@
 
         function showMainPage() {
             const content = document.getElementById('content');
-            content.innerHTML = '<p>세종대학교 주변에는 다양한 분위기와 매력을 가진 카페들이 많이 있습니다. 아래 메뉴를 클릭하여 각 카페의 소개와 이미지를 확인해보세요!</p>';
+            content.innerHTML = '<p>세종대학교 주변에는 다양한 분위기와 매력을 가진 카페들이 많이 있습니다. 상단의 메뉴를 클릭하여 각 카페의 소개와 이미지를 확인해보세요!</p>';
 
             const gallery = document.getElementById('gallery');
             gallery.innerHTML = '';
