@@ -27,15 +27,58 @@
             width: 300px;
             height: auto;
             border-radius: 10px;
+            margin: 10px;
+        }
+        .map {
+            width: 100%;
+            height: 400px;
+            margin-top: 20px;
         }
     </style>
+    <!-- * 카카오맵 - 지도퍼가기 -->
+
+<!--
+	2. 설치 스크립트
+	* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+-->
+<script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+<!-- 3. 실행 스크립트 -->
+<script charset="UTF-8">
+	new daum.roughmap.Lander({
+		"timestamp" : "1716959919472",
+		"key" : "2jh9e",
+		"mapWidth" : "640",
+		"mapHeight" : "360"
+	}).render();
+</script>
 </head>
 <body>
     <div class="banner">카페 연필</div>
     <div class="content">
         <h2>카페 연필 소개</h2>
-        <p>여기는 카페 1에 대한 간단한 소개글이 들어갈 자리입니다.</p>
-        <img src="../cafe1.jpg" alt="Cafe 1">
+        <p>여기는 카페 연필에 대한 간단한 소개글이 들어갈 자리입니다.</p>
+        <img src="../images/cafe1_1.jpg" alt="Cafe 1 Image 1">
+        <img src="../images/cafe1_2.jpg" alt="Cafe 1 Image 2">
+        <img src="../images/cafe1_3.jpg" alt="Cafe 1 Image 3">
+        <img src="../images/cafe1_4.jpg" alt="Cafe 1 Image 4">
+        <div id="daumRoughmapContainer1716959919472" class="root_daum_roughmap root_daum_roughmap_landing"></div>
     </div>
+    <script>
+        function initMap() {
+            var cafeLocation = {lat: 37.555183, lng: 127.082065}; // 예시 좌표, 실제 위치로 변경 필요
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: cafeLocation
+            });
+            var marker = new google.maps.Marker({
+                position: cafeLocation,
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
 </body>
 </html>
