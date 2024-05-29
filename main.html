@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- 문서의 문자 인코딩 및 뷰포트 설정 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 문서의 제목 설정 -->
     <title>광진구 주변 카페 추천</title>
+    <!-- Google Fonts에서 Do Hyeon 폰트 불러오기 -->
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <!-- 내부 스타일 시트 -->
     <style>
+        /* 전체 페이지의 기본 스타일 설정 */
         body {
             font-family: 'Do Hyeon', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #c2b4d6;
+            background-color: #c2b4d6; /* 배경 색상 설정 */
         }
+        /* 배너 영역 스타일 설정 */
         .banner {
             background-color: #e5e5e5;
             color: #354649;
             text-align: center;
             padding: 20px;
             font-size: 24px;
-            cursor: pointer;
+            cursor: pointer; /* 클릭 가능하게 설정 */
         }
+        /* 메뉴 영역 스타일 설정 */
         .menu {
             display: flex;
             justify-content: center;
             padding: 10px;
             background-color: #f7f7f7;
         }
+        /* 메뉴 버튼 스타일 설정 */
         .menu button {
             background-color: #354649;
             color: white;
@@ -38,13 +46,16 @@
             transition: background-color 0.3s;
             font-family: 'Do Hyeon', sans-serif;
         }
+        /* 메뉴 버튼 호버 효과 */
         .menu button:hover {
             background-color: #6d6d6d;
         }
+        /* 콘텐츠 영역 스타일 설정 */
         .content {
             text-align: center;
             padding: 20px;
         }
+        /* 갤러리 영역 스타일 설정 */
         .gallery {
             display: flex;
             flex-wrap: wrap;
@@ -52,6 +63,7 @@
             padding: 20px;
             gap: 10px; /* 이미지 간 간격을 일정하게 유지 */
         }
+        /* 갤러리 내 링크 스타일 설정 */
         .gallery a {
             flex: 1 1 200px; /* 기본 너비를 200px로 설정, 공간이 부족할 경우 줄어들 수 있음 */
             max-width: 200px; /* 최대 너비를 200px로 설정 */
@@ -61,6 +73,7 @@
             text-decoration: none;
             color: inherit;
         }
+        /* 갤러리 내 이미지 스타일 설정 */
         .gallery img {
             width: 100%; /* 부모 요소의 너비에 맞게 조정 */
             height: 200px; /* 고정 높이 */
@@ -68,9 +81,11 @@
             object-fit: cover; /* 이미지가 고정 크기에 맞게 조정됨 */
             transition: transform 0.2s;
         }
+        /* 갤러리 이미지 호버 효과 */
         .gallery a:hover img {
             transform: scale(1.05);
         }
+        /* 갤러리 내 카페 이름 스타일 설정 */
         .gallery .cafe-name {
             position: absolute;
             bottom: 10px;
@@ -82,7 +97,7 @@
             font-size: 16px;
         }
         
-        /* Media Queries for Responsive Design */
+        /* 미디어 쿼리를 통한 반응형 디자인 설정 */
         @media (max-width: 1200px) {
             .gallery a {
                 flex: 1 1 45%; /* 화면이 작아질 경우 너비를 45%로 설정 */
@@ -96,22 +111,29 @@
     </style>
 </head>
 <body>
+    <!-- 페이지 배너 -->
     <div class="banner" onclick="showMainPage()">광진구 주변 카페 추천</div>
+    <!-- 메뉴 영역 -->
     <div class="menu">
+        <!-- 각 메뉴 버튼 -->
         <button onclick="showPage(1, '분위기가 좋은 카페')">분위기가 좋은 카페</button>
         <button onclick="showPage(2, '디저트가 맛있는 카페')">디저트가 맛있는 카페</button>
         <button onclick="showPage(3, '공부하기 좋은 카페')">공부하기 좋은 카페</button>
         <button onclick="showPage(4, '커피가 맛있는 카페')">커피가 맛있는 카페</button>
     </div>
+    <!-- 콘텐츠 영역 -->
     <div class="content" id="content">
         <!-- 초기 소개글 -->
-        <p><p>광진구에는 다양한 분위기와 매력을 가진 카페들이 많이 있습니다.<br>선정한 카페는 모두 학교에서 30분 이내에 갈 수 있는 위치에 있습니다.<br> 상단의 메뉴를 클릭하여 각 카페의 소개와 이미지를 확인해보세요!</p>
+        <p>광진구에는 다양한 분위기와 매력을 가진 카페들이 많이 있습니다.<br>선정한 카페는 모두 학교에서 30분 이내에 갈 수 있는 위치에 있습니다.<br> 상단의 메뉴를 클릭하여 각 카페의 소개와 이미지를 확인해보세요!</p>
     </div>
+    <!-- 갤러리 영역 -->
     <div class="gallery" id="gallery">
-        <!-- Gallery items will be injected here by JavaScript -->
+        <!-- 갤러리 아이템은 JavaScript로 삽입됩니다 -->
     </div>
 
+    <!-- JavaScript 코드 -->
     <script>
+        // 카페 데이터 배열
         const cafes = [
             { href: "cafe/mood/pencil.html", img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230212_231%2F1676154913718sctjy_JPEG%2FScreenshot_20230212_073124_Instagram.jpg", name: "연필" },
             { href: "cafe/mood/cafe2.html", img: "https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDAzMTNfMTk3%2FMDAxNzEwMjk3Njc3MTA4.-3lLBcSfPAOTJO_4Or88ZAjM2Py_hP3xR6S-I3Ti9-wg.qQFe97Jj7VPPiAA3I8MZQT7PpKrKsGzbbw_ZCpkf8OMg.JPEG%2FIMG_2222.jpeg%3Ftype%3Dw1500_60_sharpen", name: "IWLT SEOUL" },
@@ -131,20 +153,22 @@
             { href: "cafe/coffee/cafe16.html", img: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzExMTNfOSAg%2FMDAxNjk5ODQ5NDQ1OTI4.ixJ92cU_cjq6k-Rh2pkXtBKqqkPuK0L2PAV02ubzvE4g.HODjbaYhSE6lQ1q-8hpgv5b7f-bUUQ880rbqwC7whmgg.JPEG.haili17%2FIMG_8728.jpg", name: "코에오 COEO" },
         ];
 
+        // 초기 메인 페이지 설정 함수
         function showMainPage() {
             const content = document.getElementById('content');
             content.innerHTML = '<p>광진구에는 다양한 분위기와 매력을 가진 카페들이 많이 있습니다.<br>선정한 카페는 모두 학교에서 30분 이내에 갈 수 있는 위치에 있습니다.<br> 상단의 메뉴를 클릭하여 각 카페의 소개와 이미지를 확인해보세요!</p>';
 
             const gallery = document.getElementById('gallery');
-            gallery.innerHTML = '';
+            gallery.innerHTML = ''; // 갤러리 초기화
         }
 
+        // 페이지 별 카페 리스트를 보여주는 함수
         function showPage(page, category) {
             const content = document.getElementById('content');
             content.innerHTML = `<p>${category}를 소개합니다.</p>`;
 
             const gallery = document.getElementById('gallery');
-            gallery.innerHTML = '';
+            gallery.innerHTML = ''; // 갤러리 초기화
 
             const start = (page - 1) * 4;
             const end = start + 4;

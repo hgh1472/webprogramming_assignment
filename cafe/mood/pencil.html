@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- 문서의 문자 인코딩 및 뷰포트 설정 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 문서의 제목 설정 -->
     <title>카페 연필</title>
+    <!-- Google Fonts에서 Do Hyeon 폰트 불러오기 -->
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <!-- 내부 스타일 시트 -->
     <style>
+        /* 전체 페이지의 기본 스타일 설정 */
         body {
             font-family: 'Do Hyeon', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #c2b4d6; /* 배경 색상 설정 */
         }
+        /* 배너 영역 스타일 설정 */
         .banner {
             background-color: #e5e5e5;
             color: #354649;
@@ -19,26 +25,32 @@
             padding: 20px;
             font-size: 24px;
         }
+        /* 콘텐츠 영역 스타일 설정 */
         .content {
             text-align: center;
             padding: 20px;
         }
+        /* 콘텐츠 내 이미지 스타일 설정 */
         .content img {
             width: 300px;
             height: auto;
             border-radius: 10px;
             margin: 10px;
         }
-        .map {
-            width: 80%; /* 너비를 80%로 설정 */
-            height: 300px; /* 높이를 300px로 설정 */
-            margin-top: 20px;
-            margin: auto; /* 가운데 정렬 */
+        /* 지도 컨테이너 내 iframe 스타일 설정 */
+        .map-container iframe {
+            min-height: 300px;
+            max-width: 500px;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
+        /* 버튼 컨테이너 스타일 설정 */
         .button-container {
             text-align: center;
             margin: 20px;
         }
+        /* 버튼 스타일 설정 */
         .button-container button {
             background-color: #354649;
             color: white;
@@ -51,13 +63,16 @@
             transition: background-color 0.3s;
             font-family: 'Do Hyeon', sans-serif;
         }
+        /* 버튼 호버 효과 */
         .button-container button:hover {
             background-color: #6d6d6d;
         }
+        /* 링크 컨테이너 스타일 설정 */
         .link-container {
             text-align: center;
             margin: 20px;
         }
+        /* 링크 스타일 설정 */
         .link-container a {
             background-color: #354649;
             color: white;
@@ -69,32 +84,40 @@
             transition: background-color 0.3s;
             display: inline-block;
         }
+        /* 링크 호버 효과 */
         .link-container a:hover {
             background-color: #6d6d6d;
         }
     </style>
 </head>
 <body>
+    <!-- 페이지 배너 -->
     <div class="banner">카페 연필</div>
+    <!-- 페이지 콘텐츠 -->
     <div class="content">
+        <!-- 카페 연필 소개글 -->
         <h2>카페 연필 소개</h2>
         <p>여기는 카페 연필에 대한 간단한 소개글이 들어갈 자리입니다.</p>
+        <!-- 카페 이미지 -->
         <img src="../images/cafe1_1.jpg" alt="Cafe 1 Image 1">
         <img src="../images/cafe1_2.jpg" alt="Cafe 1 Image 2">
         <img src="../images/cafe1_3.jpg" alt="Cafe 1 Image 3">
         <img src="../images/cafe1_4.jpg" alt="Cafe 1 Image 4">
 
+        <!-- 네이버 지도 및 인스타그램 링크 -->
         <div class="link-container">
             <a href="https://map.naver.com/v5/entry/place/주소" target="_blank">네이버 지도</a>
             <a href="https://www.instagram.com/카페인스타그램주소" target="_blank">인스타그램</a>
         </div>
 
-        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.994612137412!2d127.07300477456033!3d37.55519072478067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca5fa4a014613%3A0x5326553b974e1198!2z7Jew7ZWE!5e0!3m2!1sko!2skr!4v1716961378467!5m2!1sko!2skr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <!-- 지도 삽입 -->
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.994612137412!2d127.07300477456033!3d37.55519072478067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca5fa4a014613%3A0x5326553b974e1198!2z7Jew7ZWE!5e0!3m2!1sko!2skr!4v1716961378467!5m2!1sko!2skr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
         
-        
-        <!-- 목록 버튼 -->
+        <!-- 목록으로 돌아가기 버튼 -->
         <div class="button-container">
-            <button onclick="location.href='../main.html'">목록으로 돌아가기</button>
+            <button onclick="location.href='../../main.html'">목록으로 돌아가기</button>
         </div>
     </div>
 </body>
