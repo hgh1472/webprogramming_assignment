@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>세종대학교 주변 카페 추천</title>
+    <title>광진구 주변 카페 추천</title>
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <style>
         body {
@@ -96,7 +96,7 @@
     </style>
 </head>
 <body>
-    <div class="banner" onclick="showMainPage()">세종대학교 주변 카페 추천</div>
+    <div class="banner" onclick="showMainPage()">광진구 주변 카페 추천</div>
     <div class="menu">
         <button onclick="showPage(1, '예쁜 카페')">예쁜 카페</button>
         <button onclick="showPage(2, '디저트가 맛있는 카페')">디저트가 맛있는 카페</button>
@@ -105,7 +105,7 @@
     </div>
     <div class="content" id="content">
         <!-- 초기 소개글 -->
-        <p>세종대학교 주변에는 다양한 분위기와 매력을 가진 카페들이 많이 있습니다. 아래 메뉴를 클릭하여 각 카페의 소개와 이미지를 확인해보세요!</p>
+        <p><p>광진구에는 다양한 분위기와 매력을 가진 카페들이 많이 있습니다.<br>선정한 카페는 모두 학교에서 30분 이내에 갈 수 있는 위치에 있습니다.<br> 상단의 메뉴를 클릭하여 각 카페의 소개와 이미지를 확인해보세요!</p>
     </div>
     <div class="gallery" id="gallery">
         <!-- Gallery items will be injected here by JavaScript -->
@@ -133,7 +133,7 @@
 
         function showMainPage() {
             const content = document.getElementById('content');
-            content.innerHTML = '<p>세종대학교 주변에는 다양한 분위기와 매력을 가진 카페들이 많이 있습니다. 상단의 메뉴를 클릭하여 각 카페의 소개와 이미지를 확인해보세요!</p>';
+            content.innerHTML = '<p>광진구에는 다양한 분위기와 매력을 가진 카페들이 많이 있습니다.<br>선정한 카페는 모두 학교에서 30분 이내에 갈 수 있는 위치에 있습니다.<br> 상단의 메뉴를 클릭하여 각 카페의 소개와 이미지를 확인해보세요!</p>';
 
             const gallery = document.getElementById('gallery');
             gallery.innerHTML = '';
