@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <!-- 문서의 문자 인코딩 및 뷰포트 설정 -->
+    <!-- 문서의 문자 인코딩 설정 (UTF-8) -->
     <meta charset="UTF-8">
+    <!-- 문서의 뷰포트 설정 (모바일 장치에서의 초기 스케일 설정) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 문서의 제목 설정 -->
-    <title>광진구 주변 카페 추천</title>
-    <!-- Google Fonts에서 Do Hyeon 폰트 불러오기 -->
+    <title>세종대학교 주변 카페 추천</title>
+    <!-- Google Fonts에서 Do Hyeon 폰트를 불러오기 위한 링크 -->
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <!-- 내부 스타일 시트 -->
     <style>
         /* 전체 페이지의 기본 스타일 설정 */
         body {
-            font-family: 'Do Hyeon', sans-serif;
+            font-family: 'Do Hyeon', sans-serif; /* 폰트 설정 */
             margin: 0;
             padding: 0;
             background-color: #c2b4d6; /* 배경 색상 설정 */
@@ -21,15 +22,15 @@
         .banner {
             background-color: #e5e5e5;
             color: #354649;
-            text-align: center;
+            text-align: center; /* 텍스트 중앙 정렬 */
             padding: 20px;
             font-size: 24px;
             cursor: pointer; /* 클릭 가능하게 설정 */
         }
         /* 메뉴 영역 스타일 설정 */
         .menu {
-            display: flex;
-            justify-content: center;
+            display: flex; /* 플렉스 박스 레이아웃 사용 */
+            justify-content: center; /* 메뉴 버튼들을 중앙 정렬 */
             padding: 10px;
             background-color: #f7f7f7;
         }
@@ -37,13 +38,13 @@
         .menu button {
             background-color: #354649;
             color: white;
-            border: none;
+            border: none; /* 테두리 없애기 */
             padding: 10px 20px;
             margin: 5px;
-            cursor: pointer;
+            cursor: pointer; /* 클릭 가능하게 설정 */
             font-size: 16px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border-radius: 5px; /* 둥근 모서리 */
+            transition: background-color 0.3s; /* 배경 색상 전환 효과 */
             font-family: 'Do Hyeon', sans-serif;
         }
         /* 메뉴 버튼 호버 효과 */
@@ -57,9 +58,9 @@
         }
         /* 갤러리 영역 스타일 설정 */
         .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+            display: flex; /* 플렉스 박스 레이아웃 사용 */
+            flex-wrap: wrap; /* 여러 줄로 아이템을 감싸기 */
+            justify-content: space-around; /* 아이템 간격을 고르게 분배 */
             padding: 20px;
             gap: 10px; /* 이미지 간 간격을 일정하게 유지 */
         }
@@ -70,30 +71,30 @@
             box-sizing: border-box;
             padding: 10px;
             position: relative;
-            text-decoration: none;
-            color: inherit;
+            text-decoration: none; /* 링크의 밑줄 없애기 */
+            color: inherit; /* 부모 요소의 색상 상속 */
         }
         /* 갤러리 내 이미지 스타일 설정 */
         .gallery img {
             width: 100%; /* 부모 요소의 너비에 맞게 조정 */
             height: 200px; /* 고정 높이 */
-            border-radius: 10px;
+            border-radius: 10px; /* 둥근 모서리 */
             object-fit: cover; /* 이미지가 고정 크기에 맞게 조정됨 */
-            transition: transform 0.2s;
+            transition: transform 0.2s; /* 변환 효과 */
         }
         /* 갤러리 이미지 호버 효과 */
         .gallery a:hover img {
-            transform: scale(1.05);
+            transform: scale(1.05); /* 이미지 확대 효과 */
         }
         /* 갤러리 내 카페 이름 스타일 설정 */
         .gallery .cafe-name {
             position: absolute;
             bottom: 10px;
             left: 10px;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
             color: white;
             padding: 5px 10px;
-            border-radius: 5px;
+            border-radius: 5px; /* 둥근 모서리 */
             font-size: 16px;
         }
         
@@ -112,7 +113,7 @@
 </head>
 <body>
     <!-- 페이지 배너 -->
-    <div class="banner" onclick="showMainPage()">광진구 주변 카페 추천</div>
+    <div class="banner" onclick="showMainPage()">세종대학교 주변 카페 추천</div>
     <!-- 메뉴 영역 -->
     <div class="menu">
         <!-- 각 메뉴 버튼 -->

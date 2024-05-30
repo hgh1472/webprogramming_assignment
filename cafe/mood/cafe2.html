@@ -24,6 +24,7 @@
             text-align: center;
             padding: 20px;
             font-size: 24px;
+            cursor: pointer;
         }
         /* 콘텐츠 영역 스타일 설정 */
         .content {
@@ -32,8 +33,9 @@
         }
         /* 콘텐츠 내 이미지 스타일 설정 */
         .content img {
-            width: 300px;
-            height: auto;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
             border-radius: 10px;
             margin: 10px;
         }
@@ -92,17 +94,17 @@
 </head>
 <body>
     <!-- 페이지 배너 -->
-    <div class="banner">카페 IWLT SEOUL</div>
+    <div class="banner" onclick="location.href='../../main.html'">세종대학교 주변 카페 추천</div>
     <!-- 페이지 콘텐츠 -->
     <div class="content">
         <!-- 카페 연필 소개글 -->
         <h2>카페 IWLT SEOUL 소개</h2>
         <p>여기는 카페 IWLT SEOUL에 대한 간단한 소개글이 들어갈 자리입니다.</p>
         <!-- 카페 이미지 -->
-        <img src="../images/cafe1_1.jpg" alt="Cafe 1 Image 1">
-        <img src="../images/cafe1_2.jpg" alt="Cafe 1 Image 2">
-        <img src="../images/cafe1_3.jpg" alt="Cafe 1 Image 3">
-        <img src="../images/cafe1_4.jpg" alt="Cafe 1 Image 4">
+        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMjdfMjkg%2FMDAxNjk4NDEyNTUzODIx.mF1KHoHlPnudWmYJr_BsYUDdZvqL1jyE1T8ZuYZpyXsg.DGhzVBHWPGSU6Ep-gVTdZiIV3MifPiITJNIum2n6AE4g.JPEG.wodud7478%2FLRG_DSC04806.jpg&type=a340" alt="Cafe 1 Image 1">
+        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAyMTVfMTgg%2FMDAxNzA3OTc0NzYwNTQx.kGCuO85iXbJ8lNc4FXC63I3YFZ6q0qSZ8JHyZ9gWRgkg.jEjnIXouTAaPp2cjrAvOwGqM-5D9gkyGz3y_wIPK3r4g.JPEG.eroi9l0%2FIMG_2899.jpg&type=a340" alt="Cafe 1 Image 2">
+        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAyMDJfMTUx%2FMDAxNjc1MzIyNTIzMDc0._x0DHijJbxuTDU70N2YMv1rTC9KEThZ3OsBR0aFVgRIg.uuKnBDU1gl-mAqhDrQwc__Sm1aFeTnJlO-ehYOpTeTcg.JPEG.joimoi%2F15FC955A-D49D-4D39-B464-9A8B7EDFCD6E.jpg&type=a340" alt="Cafe 1 Image 3">
+        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA1MDlfMTgx%2FMDAxNzE1MjI5NjEwODIz.26v9-sHJ-_orc_LJyTR4oZztM0qTM43vdiZEJ2bAKKYg.tu43-agqfXrG5aEBbRD8StULWmdrjmO4baRoaRD_ocMg.JPEG%2FIMG_9374.JPG&type=a340" alt="Cafe 1 Image 4">
 
         <!-- 네이버 지도 및 인스타그램 링크 -->
         <div class="link-container">
@@ -117,7 +119,7 @@
         
         <!-- 목록으로 돌아가기 버튼 -->
         <div class="button-container">
-            <button onclick="location.href='fisrtHTML.html'">목록으로 돌아가기</button>
+            <button onclick="location.href='../../main.html?function=showPage&page=1&category=분위기가 좋은 카페'">목록으로 돌아가기</button>
         </div>
     </div>
 </body>
